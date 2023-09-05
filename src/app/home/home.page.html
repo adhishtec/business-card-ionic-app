@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Business Card Application </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Business Card Application</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button (click)="openCamera('front')"
+    ><ion-icon name="scan-outline"></ion-icon>Scan front page</ion-button
+  >
+  <div *ngIf="frontB64Image">Front uploaded</div>
+  <br />
+  <ion-button (click)="openCamera('back')">Scan back page</ion-button>
+  <div *ngIf="backB64Image">Back uploaded</div>
+  <br />
+
+  <ion-button
+    color="success"
+    (click)="fetchBusinessCardDetails()"
+    [disabled]="!frontB64Image || !backB64Image"
+    >Submit Image</ion-button
+  >
+  <div *ngIf="loading | async; else loaded">
+    <ion-item><ion-spinner name="lines-sharp"></ion-spinner></ion-item></div
+  >
+  <ng-template #loaded
+    ><ion-content>
+      <form
+        [formGroup]="ionicForm"
+        *ngIf="businessCard && businessCard.contact && businessCard.contact.organization"
+      >
+        <ion-item *ngFor="let key of businessCardKeys">
+          <div
+            *ngIf="checkType(businessCard[key]) === 'object'; else showInput"
+          >
+            <ion-item *ngFor="let subKey of getKeys(businessCard[key])">
+              <ion-label position="floating">{{subKey}}</ion-label>
+              <ion-input type="text" [formControlName]="subKey"></ion-input>
+            </ion-item>
+          </div>
+          <ng-template #showInput>
+            <ion-label position="floating">{{key}}</ion-label>
+            <ion-input type="text" [formControlName]="key"></ion-input>
+          </ng-template>
+        </ion-item>
+      </form> </ion-content
+  ></ng-template>
+</ion-content>
