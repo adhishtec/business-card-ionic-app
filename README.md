@@ -28,7 +28,7 @@ Android Studio (for Android development) or Xcode (for iOS development) if you p
 - Run the app on the Android emulator or device:
   ionic capacitor run android
 
-
+**** Note *** you can add the api key in env file and then use 
 
 
 Capacitor Documentation
