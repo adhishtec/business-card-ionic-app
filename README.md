@@ -29,10 +29,27 @@ Android Studio (for Android development) or Xcode (for iOS development) if you p
   ionic capacitor run android
 
 
+
+
+Capacitor Documentation
+For more information on using Capacitor to build and run your app on various platforms, please refer to the Capacitor documentation.
+https://capacitorjs.com/docs
+
+Additional Resources
+Ionic Framework Documentation https://ionicframework.com/docs/
+Capacitor Plugins https://capacitorjs.com/docs/vscode/plugins
+
+Contributing
+Adhish Nigam - Mobile application Developer
+
+License
+Feel free to use and update 
+
+
 Running the App on iOS Simulator or Device
 To run the app on an iOS simulator or device, follow these steps:
 
-- Add iOS platform to your project (if not already added):
+- Add iOS platform to your project:
   ionic capacitor add ios
 - Build the app for iOS:
   ionic build
